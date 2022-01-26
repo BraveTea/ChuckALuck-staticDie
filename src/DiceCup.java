@@ -6,6 +6,7 @@ public class DiceCup {
 
     DiceCup(){}
 
+
     protected void throwDice(){
         for (int i = 0; i < 3; i++){
             throwResults[i] = Die.roll();

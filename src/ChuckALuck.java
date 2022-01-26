@@ -1,7 +1,7 @@
 public class ChuckALuck {
     private int round;
     private int luckyNumber;
-    private DiceCup diceCup = new DiceCup();
+    private final DiceCup diceCup = new DiceCup();
     private int balance;
 
 
