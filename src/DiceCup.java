@@ -6,16 +6,15 @@ public class DiceCup {
 
     DiceCup(){}
 
-    public void throwDice(){
+    protected void throwDice(){
         for (int i = 0; i < 3; i++){
             throwResults[i] = Die.roll();
         }
     }
 
+
     @Override
     public String toString() {
-        return "DiceCup{" +
-                "throwResults=" + Arrays.toString(throwResults) +
-                '}';
+        return Arrays.toString(throwResults);
     }
 }

@@ -13,6 +13,9 @@ ChuckALuck
 - luckyNumber : int
 - round : int
 -----------
++ playRound(luckyNumberGuess, betAmount) : void
+- increaseBalance(int betMultiplier) : void
+- checkNumbers(int[] diceThrow) : int betMultiplier
 + toString()
 
 

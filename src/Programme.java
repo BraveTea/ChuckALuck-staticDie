@@ -5,7 +5,10 @@ public class Programme {
 
         ChuckALuck game1 = new ChuckALuck(100);
 
-        game1.testRunGame();
+        game1.playRound(1,5);
+        System.out.println(game1);
+        game1.playRound(1,5);
+        System.out.println(game1);
     }
 
 }
