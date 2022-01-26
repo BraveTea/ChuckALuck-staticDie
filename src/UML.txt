@@ -6,15 +6,17 @@ game1 : ChuckALuck
 
 
 
-
 ChuckALuck
 -----------
 - balance : int
 - luckyNumber : int
 - round : int
 -----------
++ playRound(luckyNumberGuess, betAmount) : void
+- increaseBalance(int betMultiplier) : void
+- increaseBalance(int amount) : void
+- checkNumbers(int[] diceThrow) : int betMultiplier
 + toString()
-
 
 
 
@@ -25,7 +27,6 @@ DiceCup
 - die3 : Die/int
 ------------
 + toString()
-
 
 
 
