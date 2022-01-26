@@ -1,5 +1,3 @@
-import java.util.Arrays;
-
 public class ChuckALuck {
     private int round;
     private int luckyNumber;
@@ -16,29 +14,23 @@ public class ChuckALuck {
         this.balance = 100;
     }
 
-    //TODO playRound() is now an accumulation of all different sort of code. Will need to put
-    // all logic of the bet checking system in a separate method. Perhaps in several methods
-    // for example: Check for how many of the luckyNumbers is in diceThrow, return int.
-    // This int will go into a increase balance method.
-    // int checkAmountOfNumbers(){ return int betMultiplier = 1,2,10
-    // these will then be the argument for void increaseBalance(int betMultiplier)
-    public void playRound(int numberChoice, int betAmount){
-        luckyNumber = numberChoice;
+    public void playRound(int luckyNumber, int betAmount){
+        this.luckyNumber = luckyNumber;
         increaseRound();
         diceCup.throwDice();
-//        payOut();
+        runBetting(luckyNumber, betAmount);
+    }
+
+    private void runBetting(int luckyNumber, int betAmount){
+        decreaseBalance(betAmount);
+        int numOfDice = diceInThrowResults(luckyNumber, diceCup.throwResults);
+        payOut(betAmount, betMultiplier(numOfDice));
     }
 
     //Name is wrong?
     private void payOut(int betAmount, int betMultiplier){
-        increaseBalance(betAmount *= betMultiplier);
+        increaseBalance(betAmount * betMultiplier);
     }
-
-
-    private void increaseBalance(int amount){
-        balance += amount;
-    }
-
 
 
     private int betMultiplier(int diceInThrowResults){
@@ -55,34 +47,24 @@ public class ChuckALuck {
         return betMultiplier;
     }
 
-    private int diceInThrowResults(int chosenNum, int[] throwResults){
+    private int diceInThrowResults(int luckyNumber, int[] throwResults){
         int diceInResults = 0;
-        for (int each : throwResults){
-            if (chosenNum == each){
+        for (int dice : throwResults){
+            if (luckyNumber == dice){
                 diceInResults += 1;
             }
         }
         return diceInResults;
     }
 
-//    private boolean contains(int luckyNumber, int[] throwResults){
-//        return Arrays.asList(throwResults).contains(luckyNumber);
-//    }
 
+    private void increaseBalance(int amount){
+        balance += amount;
+    }
 
-
-    //generateLuckyNumber and assignLuckyNumber are only split
-    // because I want everything to be as small as possible.
-    // Also I started writing generateAndAssign which indicates 2 methods
-    // Can this be one? Should it be one? Should generateLuckyNumber() have arguments?
-//    private int generateLuckyNumber(){ //(I don't need these. wrong interpretation of gamerules
-//        Random rng = new Random();
-//        return rng.nextInt(1,7);
-//    }
-//
-//    private void assignLuckyNumber(){
-//        luckyNumber = generateLuckyNumber();
-//    }
+    private void decreaseBalance(int amount){
+        balance -= amount;
+    }
 
     private void increaseRound(){
         round++;
@@ -97,4 +79,8 @@ public class ChuckALuck {
                 "balance=" + balance + "%n" +
                 '}');
     }
+
+//        private boolean contains(int luckyNumber, int[] throwResults){
+//        return Arrays.asList(throwResults).contains(luckyNumber);
+//    }
 }
