@@ -2,10 +2,10 @@ import java.util.Random;
 
 public class Die {
 
-    protected static int roll(){
-        Random rng = new Random();
-        return rng.nextInt(1,7);
+    private static Random rng = new Random();
+
+    protected static int roll() {
+        return rng.nextInt(1, 7);
     }
-
-
 }
+
